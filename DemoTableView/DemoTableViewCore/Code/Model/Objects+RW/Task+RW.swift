@@ -8,39 +8,38 @@
 
 import Foundation
 import RealmSwift
-import Extra
 
 public extension Task {
 
-  public static func all() -> Results<Task> {
-    let realm = Realm.ex.safeInstance()
+  static func all() -> Results<Task> {
+    let realm = Realm.safeInstance()
     return realm.objects(Task.self)
   }
 
-  public static func add(name: String) throws {
+  static func add(name: String) throws {
 
     let task = Task()
     task.name = name
 
-    let realm = Realm.ex.safeInstance()
+    let realm = Realm.safeInstance()
     try realm.write {
       realm.add(task)
     }
 
   }
 
-  public static func add(_ task: Task) throws {
+  static func add(_ task: Task) throws {
 
-    let realm = Realm.ex.safeInstance()
+    let realm = Realm.safeInstance()
     try realm.write {
-      realm.add(task, update: true)
+      realm.add(task, update: .modified)
     }
 
   }
 
-  public func delete() throws {
+  func delete() throws {
 
-    let realm = Realm.ex.safeInstance()
+    let realm = Realm.safeInstance()
     try realm.write {
       realm.delete(self)
     }

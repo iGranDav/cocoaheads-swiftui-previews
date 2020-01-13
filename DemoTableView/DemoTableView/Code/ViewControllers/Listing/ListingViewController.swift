@@ -7,7 +7,6 @@
 
 import UIKit
 import RealmSwift
-import Extra
 import SwiftDate
 import DemoTableViewCore
 
@@ -49,7 +48,7 @@ class ListingViewController: UITableViewController {
 
     tableView.register(cellType: TaskCell.self)
 
-    let tasks = Realm.ex.safeInstance().objects(Task.self).sorted(byKeyPath: #keyPath(Task.dateCreated),
+    let tasks = Realm.safeInstance().objects(Task.self).sorted(byKeyPath: #keyPath(Task.dateCreated),
                                                                   ascending: false)
     state = tasks.isEmpty ? .empty : .data(tasks)
     tasksToken = tasks.observe { changes in
@@ -119,7 +118,7 @@ class ListingViewController: UITableViewController {
       refreshControl?.beginRefreshing()
     }
 
-    let tasks = Realm.ex.safeInstance().objects(Task.self).sorted(byKeyPath: #keyPath(Task.dateModified))
+    let tasks = Realm.safeInstance().objects(Task.self).sorted(byKeyPath: #keyPath(Task.dateModified))
     state = tasks.isEmpty ? .empty : .data(tasks)
 
     refreshControl?.endRefreshing()
@@ -166,7 +165,7 @@ class ListingViewController: UITableViewController {
     let task = tasks[idx.row]
 
     do {
-      let realm = Realm.ex.safeInstance()
+      let realm = Realm.safeInstance()
       try realm.write {
         task.completed = !sender.isSelected
       }

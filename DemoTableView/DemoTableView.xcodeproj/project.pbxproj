@@ -19,6 +19,7 @@
 		636A32AC2050B233003CBF27 /* DemoTableViewCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636A32A32050B233003CBF27 /* DemoTableViewCore.framework */; };
 		636A32B82050B233003CBF27 /* DemoTableViewCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636A32A32050B233003CBF27 /* DemoTableViewCore.framework */; };
 		636A32B92050B233003CBF27 /* DemoTableViewCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 636A32A32050B233003CBF27 /* DemoTableViewCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		636C5B7E23CD1CB60092137C /* Realm+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636C5B7D23CD1CB60092137C /* Realm+Safe.swift */; };
 		63C70D1620A9C8B500831184 /* DemoTableViewCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 63C70D0820A9C8B400831184 /* DemoTableViewCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		63C70D1720A9C8B500831184 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C70D0B20A9C8B400831184 /* Config.swift */; };
 		63C70D1820A9C8B500831184 /* LogsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C70D0C20A9C8B400831184 /* LogsConfig.swift */; };
@@ -119,6 +120,7 @@
 		6310BE6120ACD086009616F8 /* TaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		636A32A32050B233003CBF27 /* DemoTableViewCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DemoTableViewCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		636A32AB2050B233003CBF27 /* DemoTableViewCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoTableViewCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		636C5B7D23CD1CB60092137C /* Realm+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Safe.swift"; sourceTree = "<group>"; };
 		63777EE5204DEBAF00A63348 /* swiftlint.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = swiftlint.sh; sourceTree = "<group>"; };
 		63777EE6204DEBAF00A63348 /* swiftgen.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = swiftgen.sh; sourceTree = "<group>"; };
 		6393F802204614EA00C4B07B /* DemoTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +210,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		636C5B7C23CD1CA80092137C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				636C5B7D23CD1CB60092137C /* Realm+Safe.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		63777EE2204DEB8600A63348 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				63C70D0A20A9C8B400831184 /* Config */,
+				636C5B7C23CD1CA80092137C /* Extensions */,
 				63C70D0E20A9C8B400831184 /* Model */,
 			);
 			path = Code;
@@ -695,8 +706,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/../Pods/Target Support Files/Pods-AppCommon-DemoTableView/Pods-AppCommon-DemoTableView-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Extra-UIKit/Extra.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-AppCommon-DemoTableView/Pods-AppCommon-DemoTableView-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
@@ -704,11 +714,9 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
-				"${BUILT_PRODUCTS_DIR}/Extra-Foundation-Realm/Extra.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Extra.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
@@ -719,7 +727,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-AppCommon-DemoTableView/Pods-AppCommon-DemoTableView-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppCommon-DemoTableView/Pods-AppCommon-DemoTableView-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FC4B0B021530E37AE8ACC417 /* [CP] Check Pods Manifest.lock */ = {
@@ -747,6 +755,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				636C5B7E23CD1CB60092137C /* Realm+Safe.swift in Sources */,
 				63C70D1820A9C8B500831184 /* LogsConfig.swift in Sources */,
 				63C70D1720A9C8B500831184 /* Config.swift in Sources */,
 				63C70D1920A9C8B500831184 /* RealmConfig.swift in Sources */,

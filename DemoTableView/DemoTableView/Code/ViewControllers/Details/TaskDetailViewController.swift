@@ -125,7 +125,7 @@ final class TaskDetailViewController: UITableViewController {
     let row = sections[idx.section].rows[idx.row]
     guard case .editable = row else { return }
 
-    let realm = Realm.ex.safeInstance()
+    let realm = Realm.safeInstance()
     try? realm.write {
       task?.name = sender.text
     }
@@ -197,7 +197,7 @@ final class TaskDetailViewController: UITableViewController {
     sections[idx.section] = section
     tableView.reloadRows(at: [IndexPath(row: 1, section: idx.section)], with: .none)
 
-    let realm = Realm.ex.safeInstance()
+    let realm = Realm.safeInstance()
     try? realm.write {
       task?.dueDate = sender.date
     }
@@ -323,7 +323,7 @@ extension TaskDetailViewController: UITextViewDelegate {
 
   func textViewDidEndEditing(_ textView: UITextView) {
 
-    let realm = Realm.ex.safeInstance()
+    let realm = Realm.safeInstance()
     try? realm.write {
       task?.notes = textView.text
     }
