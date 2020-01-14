@@ -29,4 +29,22 @@ final class PlaceholderView: UIView, NibLoadable {
     }
   }
 
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    if #available(iOS 13.0, *) {
+      backgroundColor = UIColor.systemBackground
+    } else {
+      backgroundColor = UIColor.white
+    }
+  }
+}
+
+extension PlaceholderView {
+
+  static func placeholder(from state: State) -> PlaceholderView {
+    let placeholder = PlaceholderView.loadFromNib()
+    placeholder.state = state
+    return placeholder
+  }
+
 }
