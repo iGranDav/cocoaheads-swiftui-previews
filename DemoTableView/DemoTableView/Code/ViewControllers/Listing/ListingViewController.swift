@@ -22,7 +22,7 @@ class ListingViewController: UITableViewController {
   // MARK: - Members
 
   private lazy var placeholderView: PlaceholderView = { return PlaceholderView.loadFromNib() }()
-  private var state: State = .empty {
+  fileprivate var state: State = .empty {
     didSet {
       updateState()
     }

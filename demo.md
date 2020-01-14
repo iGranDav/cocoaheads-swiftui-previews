@@ -46,13 +46,18 @@ If you want to bypass the device preview and see only your view you can add this
 .previewLayout(.sizeThatFits)
 ```
 
+With some padding to see it in better conditions
+```
+.padding(10)
+```
+
 If you want to see your view in several conditions then use a `Group`
 ```
 Group {
       Text("Hello")
       Text("Hello").bold()
       Text("Hello").font(.largeTitle).bold()
-    }.previewLayout(.sizeThatFits)
+    }.previewLayout(.sizeThatFits).padding(10)
 ```
 
 But enough playing, I promise to help you using this tool to work on your views.
@@ -168,4 +173,73 @@ You can even add a display name to organize your renderings
 To exclude your preview files from release builds just add this build setting
 ```
 EXCLUDED_SOURCE_FILE_NAMES = "*_Preview*"
+```
+
+One last demo by creating `UIViewControllerPreview.swift` file
+```
+UIViewControllerPreview
+```
+
+```
+import UIKit
+
+#if canImport(SwiftUI) && DEBUG
+import SwiftUI
+
+struct UIViewControllerPreview<ViewController: UIViewController>: UIViewControllerRepresentable {
+
+  let viewController: ViewController
+
+  init(_ builder: @escaping () -> ViewController) {
+    viewController = builder()
+  }
+
+  // MARK: - UIViewControllerRepresentable
+
+  func makeUIViewController(context: Context) -> ViewController {
+    viewController
+  }
+
+  func updateUIViewController(_ uiViewController: ViewController, context: UIViewControllerRepresentableContext<UIViewControllerPreview<ViewController>>) {
+    return
+  }
+}
+#endif
+```
+
+Then create a `Listing_Preview.swift` file
+```
+Listing_Preview
+```
+
+```
+import Foundation
+
+#if canImport(SwiftUI) && DEBUG
+
+import SwiftUI
+
+@available(iOS 13, *)
+final class ListingPreview: PreviewProvider {
+
+  static var previews: some View {
+    Group {
+      UIViewControllerPreview { ListingViewController() }
+    }
+  }
+}
+
+#endif
+```
+
+You can then preview your view controllers in several devices and environments all at once
+```
+UIViewControllerPreview {
+        ListingViewController()
+      }.environment(\.sizeCategory, .extraExtraExtraLarge)
+        .previewDevice("iPhone SE")
+      UIViewControllerPreview {
+        ListingViewController()
+      }.environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+      .previewDevice("iPad Pro (11-inch)")
 ```
