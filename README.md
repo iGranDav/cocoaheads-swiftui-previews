@@ -3,7 +3,7 @@ Demo project for SwiftUI Preview talk
 
 During [CocoaHeads Nantes](https://www.meetup.com/fr-FR/CocoaHeads-Nantes) [@Rosemood](https://twitter.com/AtelierRosemood)
 
-You will find the full video of the presentation on YouTube soon
+You will find the full video of the presentation on YouTube [here](https://www.youtube.com/watch?v=9enQ5GDwda0)
 
 ## How to
 
